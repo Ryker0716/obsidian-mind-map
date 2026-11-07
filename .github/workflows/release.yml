@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
@@ -21,10 +23,11 @@ jobs:
         run: |
           npm install --no-package-lock --no-audit --no-fund
           npm run build
-          echo "tag_name=$(git tag --points-at HEAD --sort=-version:refname | head -n 1)" >> "$GITHUB_OUTPUT"
-          if [ -z "${{ steps.build.outputs.tag_name }}" ]; then
-            echo "Push a version tag to publish a release (workflow_dispatch on a branch only builds). "
-            exit 1
+          TAG_NAME=$(git tag --points-at HEAD --sort=-version:refname | head -n 1)
+          echo "tag_name=${TAG_NAME}" >> "$GITHUB_OUTPUT"
+          if [ -z "${TAG_NAME}" ]; then
+            echo "No tag points at this commit; workflow_dispatch on a branch only builds."
+            exit 0
           fi
           mkdir "${{ env.PLUGIN_NAME }}"
           cp dist/main.js manifest.json "${{ env.PLUGIN_NAME }}/"
