@@ -2,9 +2,11 @@ name: Release Build
 
 on:
   push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-    - '*' # Push events to matching any tag format, i.e. 1.0, 20.15.10
+    tags: ['*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 env:
   PLUGIN_NAME: obsidian-mind-map # Change this to the name of your plugin-id folder
