@@ -86,8 +86,8 @@ The release workflow builds `dist/main.js`; generated artifacts are not committe
 
 The original plugin is MIT licensed, copyright James Lynch. Contributions of focused compatibility fixes are welcome on the fork issue tracker.
 
-## Donating to the original author
+## Tribute to the original author
 
-This fork exists thanks to James Lynch's original work. The original donation links belong to James Lynch, not to this fork:
+Everything in this plugin starts with James Lynch's [obsidian-mind-map](https://github.com/lynchjames/obsidian-mind-map), first released in 2020. Thank you for bringing this elegant Markmap plugin to the Obsidian community, and for releasing it under the MIT license so that later maintainers could stand on his shoulders.
 
-Original donation: [PayPal](https://paypal.me/lynchjames2020). 中文说明与致谢见 [README.zh-CN.md](README.zh-CN.md)。
+All maintenance in this fork exists to carry the original project forward; without the original, there would be no fork. If you find this plugin useful, please consider supporting the original author: [PayPal](https://paypal.me/lynchjames2020) (this donation link belongs to James Lynch personally, not to this fork's maintainer).
