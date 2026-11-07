@@ -1,9 +1,23 @@
-# Obsidian Mind Map
+# Obsidian Mind Map — Community Maintenance Fork
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lynchjames/obsidian-mind-map/Release%20Build?logo=github&style=for-the-badge) ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lynchjames/obsidian-mind-map?style=for-the-badge&sort=semver)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Ryker0716/obsidian-mind-map?sort=semver)
 
+A maintained fork of [James Lynch's Obsidian Mind Map](https://github.com/lynchjames/obsidian-mind-map), distributed under the original MIT license.
 
-This repository contains a plugin for [Obsidian](https://obsidian.md/) for viewing Markdown notes as Mind Maps using [Markmap](https://markmap.js.org/). 
+The upstream plugin has not been updated since 2020 and cannot start on current Obsidian releases. This fork tracks compatibility fixes and installation instructions for this distribution; feature improvements are handled when time permits.
+
+This plugin displays [Obsidian](https://obsidian.md/) Markdown notes as mind maps using [Markmap](https://markmap.js.org/).
+
+### Changes in this fork (v1.1.1)
+
+- Starts correctly on current Obsidian releases (verified on Obsidian 1.15.0).
+- Prevents fenced code blocks from breaking the whole mind-map render. Code blocks display as plain text because Prism's runtime CommonJS language loader is unavailable in the plugin bundle; KaTeX remains enabled.
+- Keeps the preview associated with the Markdown source note and renders immediately on first open.
+- Fixes TypeScript processing with the current Rollup toolchain.
+
+Issues: [Ryker0716/obsidian-mind-map/issues](https://github.com/Ryker0716/obsidian-mind-map/issues)
+
+### Original project links
 
 A similar plugin is available for [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode).
     
@@ -37,27 +51,41 @@ Places a copy of the Mind Map SVG on your clipboard allowing you to paste it int
 
 ## Compatibility
 
-Custom plugins are only available for Obsidian v0.9.7+.
+Community releases preserve the original plugin ID (`obsidian-mind-map`). Version 1.1.1 was tested on Obsidian 1.15.0.
 
-The current API of this repo targets Obsidian **v0.9.20**. 
+## Installing this fork
 
-## Installing
+This fork is not the official community-plugin distribution. Install the GitHub release with [BRAT](https://github.com/TfTHacker/obsidian42-brat) or manually.
 
-As of version [0.9.7 of Obsidian](https://forum.obsidian.md/t/obsidian-release-v0-9-7-insider-build/7628), this plugin is available to be installed directly from within the app. The plugin can be found in the Community Plugins directory which can be accessed from the Settings pane under Third Party Plugins.
+### BRAT
 
-## Manual installation
+In Obsidian, run **BRAT: Add a beta plugin for testing**, enter `Ryker0716/obsidian-mind-map`, and enable the installed plugin. If an existing community copy conflicts, back up its `data.json`, reinstall through BRAT, and restore the settings file.
 
-1. Download the [latest release](https://github.com/lynchjames/obsidian-mind-map/releases/latest)
-1. Extract the obsidian-day-planner folder from the zip to your vault's plugins folder: `<vault>/.obsidian/plugins/`  
-Note: On some machines the `.obsidian` folder may be hidden. On MacOS you should be able to press `Command+Shift+Dot` to show the folder in Finder.
-1. Reload Obsidian
-1. If prompted about Safe Mode, you can disable safe mode and enable the plugin.
+### Manual installation
 
-## For developers
-Pull requests are both welcome and appreciated. 😀
+1. Download `main.js` and `manifest.json` from the [latest fork release](https://github.com/Ryker0716/obsidian-mind-map/releases/latest).
+2. Put both files in `<vault>/.obsidian/plugins/obsidian-mind-map/`.
+3. Ensure the folder already contains your settings as `data.json` (copy it from the previous plugin folder after backing it up if needed).
+4. Reload Obsidian and enable **Mind Map** in Community plugins.
 
-If you would like to contribute to the development of this plugin, please follow the guidelines provided in [CONTRIBUTING.md](CONTRIBUTING.md).
+Upgrade from upstream by replacing only `main.js` and `manifest.json`, keeping `data.json`. This fork preserves the original plugin ID for seamless in-place upgrades; if BRAT reports that the plugin already exists, remove its stale BRAT beta entry and add this repository instead.
 
-## Donating
+### Build and verify
 
-This plugin is provided free of charge. If you would like to donate something to me, you can via [PayPal](https://paypal.me/lynchjames2020). Thank you!
+```sh
+npm install
+npm run build
+node --check dist/main.js
+```
+
+The release workflow builds `dist/main.js`; generated artifacts are not committed. The upstream test command uses a legacy Mocha/yargs toolchain and the repository has no test directory; compatibility verification should include loading the bundle in Obsidian and opening a note with fenced code blocks.
+
+## Original project development
+
+The original plugin is MIT licensed, copyright James Lynch. Contributions of focused compatibility fixes are welcome on the fork issue tracker.
+
+## Donating to the original author
+
+The original donation links belong to James Lynch, not to this fork:
+
+Original donation: [PayPal](https://paypal.me/lynchjames2020).
