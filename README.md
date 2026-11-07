@@ -1,3 +1,5 @@
+English | [简体中文](README.zh-CN.md)
+
 # Obsidian Mind Map — Community Maintenance Fork
 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Ryker0716/obsidian-mind-map?sort=semver)
@@ -86,6 +88,6 @@ The original plugin is MIT licensed, copyright James Lynch. Contributions of foc
 
 ## Donating to the original author
 
-The original donation links belong to James Lynch, not to this fork:
+This fork exists thanks to James Lynch's original work. The original donation links belong to James Lynch, not to this fork:
 
-Original donation: [PayPal](https://paypal.me/lynchjames2020).
+Original donation: [PayPal](https://paypal.me/lynchjames2020). 中文说明与致谢见 [README.zh-CN.md](README.zh-CN.md)。
